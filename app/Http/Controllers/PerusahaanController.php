@@ -40,7 +40,7 @@ class PerusahaanController extends Controller
         'name_company' => 'required',
         'description' => 'required',
         'address' => 'required',
-        'contact' => 'required|numeric',
+        'contact' => 'required',
         'student' => 'required|integer',
       ]);
 
@@ -50,10 +50,9 @@ class PerusahaanController extends Controller
       $sa->address = $request->address;
       $sa->contact = $request->contact;
       $sa->student = $request->student;
-
       $sa->save();
 
-      return redirect('company');
+      return redirect('company')->with('message', 'Data perusahaan berhasil di tambahkan');
 
     }
 
@@ -94,7 +93,7 @@ class PerusahaanController extends Controller
         'name_company' => 'required',
         'description' => 'required',
         'address' => 'required',
-        'contact' => 'required|numeric',
+        'contact' => 'required',
         'student' => 'required|integer',
       ]);
 
@@ -107,7 +106,7 @@ class PerusahaanController extends Controller
 
       $sa->save();
 
-      return redirect('company');
+      return redirect('company')->with('message', 'Data perusahaan berhasil di update');
     }
 
     /**
@@ -120,6 +119,6 @@ class PerusahaanController extends Controller
     {
         $sa = Perusahaan::find($id);
         $sa->delete();
-        return redirect('company');
+        return redirect('company')->with('message', 'Data perusahaan berhasil di hapus');
     }
 }
