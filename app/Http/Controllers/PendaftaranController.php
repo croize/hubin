@@ -16,15 +16,26 @@ class PendaftaranController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+     }
+
     public function index()
     {
+      if (Auth::user()->akses == 0) {
+        $cu = DB::table('requestpkl')->where('user_id', Auth::user()->id);
+        return view('joincompany.requestpkl')->with('as',$cu);
+      }elseif(Auth::user()->akses == 1){
         $userid = Auth::user()->id;
         $com = Perusahaan::all();
         $daf = Pendaftaran::all();
         $user = User::all();
         $cu = DB::table('join_company')->where('user_id',$userid)->value('id');
         $cob = DB::table('join_company')->where('user_id',$userid)->value('company_id');
-        return view('home')->with('cit',$cu)->with('pen',$daf)->with('lala',$com)->with('users',$user)->with('ge',$cob);
+        return view('joincompany.index')->with('cit',$cu)->with('pen',$daf)->with('lala',$com)->with('users',$user)->with('ge',$cob);
+      }
     }
 
     /**

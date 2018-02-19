@@ -124,8 +124,8 @@
                     <li {{{ (Request::is('news') ? 'class=active' : '') }}}>
                         <a href="/news" class="waves-effect"><i class="fa fa-book fa-fw" aria-hidden="true"></i>News</a>
                     </li>
-                    <li {{{ (Request::is('requestpkl') ? 'class=active' : '') }}}>
-                        <a href="/requestpkl" class="waves-effect"><i class="fa fa-unlock-alt fa-fw" aria-hidden="true"></i>Request PKL</a>
+                    <li {{{ (Request::is('userrequest') ? 'class=active' : '') }}}>
+                        <a href="/userrequest" class="waves-effect"><i class="fa fa-unlock-alt fa-fw" aria-hidden="true"></i>Request PKL</a>
                     </li>
                 </ul>
             </div>

@@ -21,6 +21,10 @@ Route::get('company/delete/{id}', 'PerusahaanController@destroy');
 Route::resource('/join', 'PendaftaranController');
 Route::get('delete/{id}', 'PendaftaranController@destroy');
 
+Route::resource('/userrequest', 'UserrequestController');
+
+Route::resource('/requestpkl', 'RequestpklController');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -38,6 +38,19 @@
                                 @endif
                             </div>
                         </div>
+                        <div class="form-group{{ $errors->has('contact_user') ? ' has-error' : '' }}">
+                            <label for="email" class="col-md-4 control-label">Phone number</label>
+
+                            <div class="col-md-6">
+                                <input id="contact_user" type="text" class="form-control" name="contact_user" value="{{ old('contact_user') }}" required>
+
+                                @if ($errors->has('contact_user'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('contact_user') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
 
                         <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                             <label for="password" class="col-md-4 control-label">Password</label>

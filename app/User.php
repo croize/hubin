@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password','contact_user'
     ];
 
     /**
@@ -30,6 +30,11 @@ class User extends Authenticatable
     public function Pendaftaran()
     {
       return $this->hasMany('App\Pendaftaran');
+    }
+
+    public function Request()
+    {
+      return $this->hasMany('App\Requestpkl');
     }
 
 }

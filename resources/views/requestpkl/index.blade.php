@@ -8,44 +8,63 @@
 @section('content')
 <div class="row bg-title">
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-        <h4 class="page-title">Data Perusahaan</h4> </div>
+        <h4 class="page-title">Data User Request PKL</h4> </div>
     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
         <ol class="breadcrumb">
-            <li class="active">Data Perusahaan</li>
+            <li class="active">Data Request</li>
         </ol>
     </div>
     <!-- /.col-lg-12 -->
 </div>
 <div class="col-sm-12">
     <div class="white-box">
-        <h3 class="box-title m-b-0">Data Perusahaan</h3>
-        <p class="text-muted m-b-30">Penambahan, edit dan delete data perusahaan.</p>
+        <h3 class="box-title m-b-0">Data Request PKL</h3>
+        <p class="text-muted m-b-30"></p>
         @if(Session::get('message') != NULL)
         <div class="alert alert-success alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
             {{ Session::get('message') }}
         </div>
         @endif
-        <a href="/company/create" class="btn btn-info">Create</a><hr>
         <div class="table-responsive">
             <table id="myTable" class="display nowrap" cellspacing="0" width="100%">
                 <thead>
                     <tr>
-                        <th>Company name</th>
-                        <th>Contact</th>
-                        <th>Total student</th>
+                        <th>Name</th>
+                        <th>Class</th>
                         <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
                   @foreach($company as $perusahaan)
                     <tr>
-                        <td>{{$perusahaan->name_company}}</td>
-                        <td>{{$perusahaan->contact}}</td>
-                        <td>{{$perusahaan->student}}</td>
-                        <td><a href="/company/{{$perusahaan->id}}" class="btn btn-info">View</a>
-                          <a href="/company/{{$perusahaan->id}}/edit" class="btn btn-warning">Edit</a>
-                          <a href="{{url('company/delete', $perusahaan->id)}}" class="btn btn-danger">Delete</a>
+                        <td>{{$perusahaan->Users['name']}}</td>
+                        <td>{{$perusahaan->Users['class']}}</td>
+                        <td>
+                          <a href="/userrequest"
+                              onclick="event.preventDefault();
+                                       document.getElementById('accepted').submit();" class="btn btn-success">
+                              <i class="fa fa-check"></i>
+                          </a>
+                          <form id="accepted" action="/userrequest/{{$perusahaan->id}}" method="POST" style="display: none;">
+                              {{ csrf_field() }}
+                              <input type="hidden" name="_method" value="put">
+                              <input type="hidden" name="id" value="{{$perusahaan->id}}">
+                              <input type="hidden" name="akses" value="1">
+                              <input type="hidden" name="user_id" value="{{$perusahaan->user_id}}">
+                          </form>
+                          <a href="/userrequest"
+                              onclick="event.preventDefault();
+                                       document.getElementById('denied').submit();" class="btn btn-danger">
+                              X
+                          </a>
+                          <form id="denied" action="/userrequest/{{$perusahaan->id}}" method="POST" style="display: none;">
+                              {{ csrf_field() }}
+                              <input type="hidden" name="_method" value="put">
+                              <input type="hidden" name="id" value="{{$perusahaan->id}}">
+                              <input type="hidden" name="akses" value="1">
+                              <input type="hidden" name="user_id" value="{{$perusahaan->user_id}}">
+                          </form>
                         </td>
                     </tr>
                   @endforeach
@@ -66,11 +85,6 @@
 <script src="{{url('assets/bower_components/datatables/buttons.html5.min.js')}}"></script>
 <script src="{{url('assets/bower_components/datatables/buttons.print.min.js')}}"></script>
 <script>
-$('#myTable').DataTable({
-    dom: 'Bfrtip',
-    buttons: [
-        'copy', 'csv', 'excel', 'pdf', 'print'
-    ]
-});
+$('#myTable').DataTable();
 </script>
 @endsection
