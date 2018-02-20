@@ -1,4 +1,4 @@
-@if($as == NULL)
+@if($as != Auth::user()->id)
 <a href="/requestpkl"
     onclick="event.preventDefault();
              document.getElementById('requestpkl').submit();">

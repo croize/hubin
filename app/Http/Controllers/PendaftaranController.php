@@ -25,7 +25,7 @@ class PendaftaranController extends Controller
     public function index()
     {
       if (Auth::user()->akses == 0) {
-        $cu = DB::table('requestpkl')->where('user_id', Auth::user()->id);
+        $cu = DB::table('request_pkl')->value('user_id');
         return view('joincompany.requestpkl')->with('as',$cu);
       }elseif(Auth::user()->akses == 1){
         $userid = Auth::user()->id;

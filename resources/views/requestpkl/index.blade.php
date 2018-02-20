@@ -62,7 +62,7 @@
                               {{ csrf_field() }}
                               <input type="hidden" name="_method" value="put">
                               <input type="hidden" name="id" value="{{$perusahaan->id}}">
-                              <input type="hidden" name="akses" value="1">
+                              <input type="hidden" name="akses" value="0">
                               <input type="hidden" name="user_id" value="{{$perusahaan->user_id}}">
                           </form>
                         </td>

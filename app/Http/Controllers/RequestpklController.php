@@ -16,6 +16,7 @@ class RequestpklController extends Controller
      public function __construct()
      {
          $this->middleware('auth');
+         $this->middleware('access:1');
      }
 
     public function index()

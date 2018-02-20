@@ -27,6 +27,22 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
+    public function akses($akses){
+      if ($this->akses == $akses) {
+        return true;
+      }else{
+        return false;
+      }
+    }
+
+    public function level($level){
+      if ($this->level == $level) {
+        return true;
+      }else{
+        return false;
+      }
+    }
+
     public function Pendaftaran()
     {
       return $this->hasMany('App\Pendaftaran');
