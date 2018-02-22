@@ -25,6 +25,8 @@ Route::group(['middleware' => 'revalidate'],function(){
 
   Route::resource('/requestpkl', 'RequestpklController');
 
+  Route::resource('/printdata', 'PrintController');
+
   Auth::routes();
 
   Route::get('/home', 'HomeController@index')->name('home');
