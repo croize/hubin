@@ -28,9 +28,7 @@ class HomeController extends Controller
       if (Auth::user()->level == 1) {
         return view('homeuser');
       }elseif (Auth::user()->level == 2) {
-        $company = DB::table('company')->count();
-        $users = DB::table('users')->where('level','1')->count();
-        return view('home')->with('as',$company)->with('sa',$users);
+        return redirect('admin');
       }
     }
 }

@@ -9,7 +9,7 @@
                             @endforeach
                           @endif
                       @endforeach
-                      <a href="{{url('delete',$cit)}}">Cancel join</a>
+                      <a href="{{url('/user/join/delete',$cit)}}">Cancel join</a>
 @else
       @foreach($lala as $su)
                   <form class="" action="join" method="post">

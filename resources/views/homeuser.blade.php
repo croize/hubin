@@ -1,5 +1,5 @@
 @extends('layouts.app')
 
 @section('content')
-  <a href="/join">PKL</a>
+  <a href="/user/join">PKL</a>
 @endsection

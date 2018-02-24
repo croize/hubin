@@ -6,7 +6,7 @@
         <h4 class="page-title">Create Company</h4> </div>
     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
         <ol class="breadcrumb">
-            <li><a href="#">Company</a></li>
+            <li><a href="/admin/company">Company</a></li>
             <li class="active">Create Company</li>
         </ol>
     </div>
@@ -18,7 +18,7 @@
             <h3 class="box-title">Create Company</h3>
               <!-- general form elements -->
 
-<form class="" action="/company" method="post" role="form">
+<form class="" action="admin/company" method="post" role="form">
   {{csrf_field()}}
 <div class="box-body">
 <div class="form-group">

@@ -1,29 +1,32 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
-use App\Requestpkl;
+use Illuminate\Support\Carbon;
+use App\Http\Controllers\Controller;
+use App\Perusahaan;
 use App\User;
+use App\Requestpkl;
 
-class UserrequestController extends Controller
+
+class AdminController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     public function __construct()
-     {
-         $this->middleware('auth');
-         $this->middleware('level:2');
-     }
-
     public function index()
     {
-        $as = Requestpkl::all();
-        return view('requestpkl.index')->with('company', $as);
+        $company = Perusahaan::all()->count();
+        $user = User::all()->where('level', 1)->count();
+        $requestpkl = Requestpkl::all()->count();
+        Carbon::setlocale(LC_TIME, 'id');
+        $now = Carbon::now();
+        $newuser = User::where('created_at', '>=', Carbon::today())->get();
+        $countnewuser = $newuser->count();
+        return view('homeadmin')->with('now',$now)->with('company',$company)->with('user',$user)->with('requestpkl',$requestpkl)->with('newuser',$newuser)->with('countnewuser',$countnewuser);
     }
 
     /**
@@ -33,7 +36,7 @@ class UserrequestController extends Controller
      */
     public function create()
     {
-
+        //
     }
 
     /**
@@ -44,7 +47,7 @@ class UserrequestController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -55,7 +58,7 @@ class UserrequestController extends Controller
      */
     public function show($id)
     {
-
+        //
     }
 
     /**
@@ -66,7 +69,7 @@ class UserrequestController extends Controller
      */
     public function edit($id)
     {
-
+        //
     }
 
     /**
@@ -78,18 +81,7 @@ class UserrequestController extends Controller
      */
     public function update(Request $request, $id)
     {
-      $this->validate($request,[
-        'user_id' => 'required',
-      ]);
-
-      $sa = User::find($request->user_id);
-      $sa->akses = $request->akses;
-      $sa->save();
-
-      $aw = Requestpkl::find($request->id);
-      $aw->delete();
-
-      return redirect('userrequest')->with('message', 'Data request berhasil di update');
+        //
     }
 
     /**
@@ -100,6 +92,6 @@ class UserrequestController extends Controller
      */
     public function destroy($id)
     {
-
+        //
     }
 }

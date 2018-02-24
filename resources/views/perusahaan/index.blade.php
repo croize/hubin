@@ -26,7 +26,7 @@
             {{ Session::get('message') }}
         </div>
         @endif
-        <a href="/company/create" class="btn btn-info">Create</a><hr>
+        <a href="/admin/company/create" class="btn btn-info">Create</a><hr>
         <div class="table-responsive">
             <table id="myTable" class="display nowrap" cellspacing="0" width="100%">
                 <thead>
@@ -43,9 +43,9 @@
                         <td>{{$perusahaan->name_company}}</td>
                         <td>{{$perusahaan->contact}}</td>
                         <td>{{$perusahaan->student}}</td>
-                        <td><a href="/company/{{$perusahaan->id}}" class="btn btn-info">View</a>
-                          <a href="/company/{{$perusahaan->id}}/edit" class="btn btn-warning">Edit</a>
-                          <a href="{{url('company/delete', $perusahaan->id)}}" class="btn btn-danger">Delete</a>
+                        <td><a href="/admin/company/{{$perusahaan->id}}" class="btn btn-info">View</a>
+                          <a href="/admin/company/{{$perusahaan->id}}/edit" class="btn btn-warning">Edit</a>
+                          <a href="{{url('/admin/company/delete', $perusahaan->id)}}" class="btn btn-danger">Delete</a>
                         </td>
                     </tr>
                   @endforeach

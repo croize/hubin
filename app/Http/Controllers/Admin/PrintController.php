@@ -1,27 +1,22 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Requestpkl;
+use App\Perusahaan;
+use App\Pendaftaran;
 
-class RequestpklController extends Controller
+class PrintController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     public function __construct()
-     {
-         $this->middleware('auth');
-         $this->middleware('access:1');
-     }
-
     public function index()
     {
-        //
+
     }
 
     /**
@@ -42,10 +37,7 @@ class RequestpklController extends Controller
      */
     public function store(Request $request)
     {
-        $as = new Requestpkl();
-        $as->user_id = $request->user_id;
-        $as->save();
-        return redirect('join');
+        //
     }
 
     /**
@@ -56,7 +48,9 @@ class RequestpklController extends Controller
      */
     public function show($id)
     {
-        //
+      $as = Perusahaan::find($id);
+      $pen = Pendaftaran::all()->where('company_id' , $id);
+      return view('print')->with('print',$as)->with('daftar',$pen);
     }
 
     /**

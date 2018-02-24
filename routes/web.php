@@ -15,17 +15,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 Route::group(['middleware' => 'revalidate'],function(){
-  Route::resource('/company', 'PerusahaanController');
-  Route::get('company/delete/{id}', 'PerusahaanController@destroy');
+// Admin Route
+  Route::resource('admin/company', 'Admin\PerusahaanController');
+  Route::get('admin/company/delete/{id}', 'Admin\PerusahaanController@destroy');
+  Route::resource('admin/userrequest', 'Admin\UserrequestController');
+  Route::resource('admin/printdata', 'Admin\PrintController');
 
-  Route::resource('/join', 'PendaftaranController');
-  Route::get('delete/{id}', 'PendaftaranController@destroy');
+  Route::resource('admin','Admin\AdminController');
 
-  Route::resource('/userrequest', 'UserrequestController');
+// User route
+  Route::resource('user/join', 'User\PendaftaranController');
+  Route::get('user/delete/{id}', 'User\PendaftaranController@destroy');
+  Route::resource('user/requestpkl', 'User\RequestpklController');
 
-  Route::resource('/requestpkl', 'RequestpklController');
-
-  Route::resource('/printdata', 'PrintController');
 
   Auth::routes();
 

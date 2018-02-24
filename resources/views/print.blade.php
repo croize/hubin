@@ -835,7 +835,7 @@ div.WordSection1
  </o:shapelayout></xml><![endif]-->
 </head>
 
-<body lang=IN link=blue vlink=purple style='tab-interval:36.0pt'>
+<body onload="window.print()" lang=IN link=blue vlink=purple style='tab-interval:36.0pt'>
 
 <div class=WordSection1>
 
@@ -898,17 +898,13 @@ class=SpellE>Yth</span></span></span></p>
 
 <p class=MsoNormal style='margin-left:72.0pt'><span class=SpellE><span
 lang=EN-US style='mso-ansi-language:EN-US'>Kepala</span></span><span
-lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>Direktorat</span>
-<span class=SpellE>Sistem</span> <span class=SpellE>dan</span> <span
-class=SpellE>Teknologi</span> <span class=SpellE>Informasi</span> ITB</span></p>
+lang=EN-US style='mso-ansi-language:EN-US'> {{$print->name_company}}</p>
 
 <p class=MsoNormal style='margin-left:72.0pt'><span lang=EN-US
 style='mso-ansi-language:EN-US'>&nbsp;</span></p>
 
 <p class=MsoNormal style='margin-left:72.0pt'><span class=SpellE><span
-lang=EN-US style='mso-ansi-language:EN-US'>Jalan</span></span><span lang=EN-US
-style='mso-ansi-language:EN-US'> <span class=SpellE>Ganesha</span> No 10.
-Bandung</span></p>
+lang=EN-US style='mso-ansi-language:EN-US'>{{$print->address}}</p>
 
 <p class=MsoNormal style='margin-left:72.0pt'><span lang=EN-US
 style='mso-ansi-language:EN-US'>&nbsp;</span></p>
@@ -1025,12 +1021,12 @@ lang=EN-US style='font-size:8.0pt;mso-ansi-language:EN-US'>&nbsp;</span></b></p>
   lang=EN-US style='mso-ansi-language:EN-US'> <span class=SpellE>kegiatan</span></span></b></p>
   </td>
  </tr>
- @foreach($print as $te)
+@foreach($daftar as $siswa)
  <tr style='mso-yfti-irow:1;height:14.2pt'>
   <td width=139 style='width:104.0pt;border:solid black 1.0pt;border-top:none;
   padding:0cm 5.4pt 0cm 5.4pt;height:14.2pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:115%'><span
-  style='color:black'>{{$te->User['name']}}</span></p>
+  style='color:black'>{{$siswa->User['name']}}</span></p>
   </td>
 
   <td width=34 style='width:25.2pt;border-top:none;border-left:none;border-bottom:
@@ -1044,7 +1040,7 @@ lang=EN-US style='font-size:8.0pt;mso-ansi-language:EN-US'>&nbsp;</span></b></p>
   height:14.2pt'>
   <p class=MsoNormal align=center style='text-align:center;line-height:115%'>101515964</p>
   </td>
-  @if($loop->first)
+@if($loop->first)
   <td width=321 rowspan=5 style='width:240.45pt;border-top:none;border-left:
   none;border-bottom:solid black 1.0pt;border-right:solid black 1.0pt;
   padding:0cm 5.4pt 0cm 5.4pt;height:14.2pt'>
@@ -1079,10 +1075,9 @@ lang=EN-US style='font-size:8.0pt;mso-ansi-language:EN-US'>&nbsp;</span></b></p>
   <span class=SpellE>saat</span> <span class=SpellE>prakerin</span> <span
   class=SpellE>berlangsung</span></span></b></p>
   </td>
-  @endif
-
+@endif
  </tr>
- @endforeach
+@endforeach
 </table>
 
 <p class=MsoNormal style='margin-left:72.0pt;text-align:justify'><span

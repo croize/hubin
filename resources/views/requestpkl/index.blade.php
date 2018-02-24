@@ -41,24 +41,24 @@
                         <td>{{$perusahaan->Users['name']}}</td>
                         <td>{{$perusahaan->Users['class']}}</td>
                         <td>
-                          <a href="/userrequest"
+                          <a href="/admin/userrequest"
                               onclick="event.preventDefault();
                                        document.getElementById('accepted').submit();" class="btn btn-success">
                               <i class="fa fa-check"></i>
                           </a>
-                          <form id="accepted" action="/userrequest/{{$perusahaan->id}}" method="POST" style="display: none;">
+                          <form id="accepted" action="/admin/userrequest/{{$perusahaan->id}}" method="POST" style="display: none;">
                               {{ csrf_field() }}
                               <input type="hidden" name="_method" value="put">
                               <input type="hidden" name="id" value="{{$perusahaan->id}}">
                               <input type="hidden" name="akses" value="1">
                               <input type="hidden" name="user_id" value="{{$perusahaan->user_id}}">
                           </form>
-                          <a href="/userrequest"
+                          <a href="/admin/userrequest"
                               onclick="event.preventDefault();
                                        document.getElementById('denied').submit();" class="btn btn-danger">
                               X
                           </a>
-                          <form id="denied" action="/userrequest/{{$perusahaan->id}}" method="POST" style="display: none;">
+                          <form id="denied" action="/admin/userrequest/{{$perusahaan->id}}" method="POST" style="display: none;">
                               {{ csrf_field() }}
                               <input type="hidden" name="_method" value="put">
                               <input type="hidden" name="id" value="{{$perusahaan->id}}">

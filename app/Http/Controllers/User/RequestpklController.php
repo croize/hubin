@@ -1,21 +1,28 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Pendaftaran;
+use App\Requestpkl;
 
-class PrintController extends Controller
+class RequestpklController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+
+     public function __construct()
+     {
+         $this->middleware('auth');
+         $this->middleware('level:1');
+     }
+
     public function index()
     {
-        $as = Pendaftaran::all();
-        return view('print')->with('print',$as);
+        //
     }
 
     /**
@@ -36,7 +43,10 @@ class PrintController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $as = new Requestpkl();
+        $as->user_id = $request->user_id;
+        $as->save();
+        return redirect('user/join');
     }
 
     /**

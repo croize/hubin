@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Perusahaan;
 
@@ -59,7 +60,7 @@ class PerusahaanController extends Controller
       $sa->student = $request->student;
       $sa->save();
 
-      return redirect('company')->with('message', 'Data perusahaan berhasil di tambahkan');
+      return redirect('admin/company')->with('message', 'Data perusahaan berhasil di tambahkan');
 
     }
 
@@ -113,7 +114,7 @@ class PerusahaanController extends Controller
 
       $sa->save();
 
-      return redirect('company')->with('message', 'Data perusahaan berhasil di update');
+      return redirect('admin/company')->with('message', 'Data perusahaan berhasil di update');
     }
 
     /**
@@ -126,6 +127,6 @@ class PerusahaanController extends Controller
     {
         $sa = Perusahaan::find($id);
         $sa->delete();
-        return redirect('company')->with('message', 'Data perusahaan berhasil di hapus');
+        return redirect('admin/company')->with('message', 'Data perusahaan berhasil di hapus');
     }
 }

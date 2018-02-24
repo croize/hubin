@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\User;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Pendaftaran;
@@ -71,7 +72,7 @@ class PendaftaranController extends Controller
       $yu->student = $as;
       $yu->save();
 
-      return redirect('join');
+      return redirect('user/join');
     }
 
     /**
@@ -127,6 +128,6 @@ class PendaftaranController extends Controller
       $as = Pendaftaran::find($id);
       $as->delete();
 
-      return redirect('join');
+      return redirect('user/join');
     }
 }

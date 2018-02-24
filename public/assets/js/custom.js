@@ -138,12 +138,12 @@
          $("#recoverform").fadeIn();
      });
 
-     /* ================================================================= 
+     /* =================================================================
          Update 1.5
          this is for close icon when navigation open in mobile view
      ================================================================= */
 
      $(".navbar-toggle").on("click", function () {
-         $(".navbar-toggle i").toggleClass("ti-menu").addClass("ti-close");
+         $(".navbar-toggle i").toggleClass("fa fa-reorder").addClass("fa fa-times");
      });
  });

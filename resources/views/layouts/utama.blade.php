@@ -65,6 +65,10 @@
                      </span> </a>
                 </div>
                 <!-- /Logo -->
+                <ul class="nav navbar-top-links navbar-left">
+                    <li><a href="javascript:void(0)" class="open-close waves-effect waves-light"><i class="fa fa-reorder"></i></a></li>
+                    <!-- /.Megamenu -->
+                </ul>
                 <ul class="nav navbar-top-links navbar-right pull-right">
                     <li>
                       <a class="dropdown-toggle profile-pic" data-toggle="dropdown" href="#"> <img src="{{url('assets/images/users/varun.jpg')}}" alt="user-img" width="36" class="img-circle"><b class="hidden-xs">{{Auth::user()->name}}</b><span class="caret"></span> </a>
@@ -112,20 +116,20 @@
                     <li {{{ (Request::is('home') ? 'class=active' : '') }}}>
                         <a href="/home" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
                     </li>
-                    <li {{{ (Request::is('users') ? 'class=active' : '') }}}>
-                        <a href="/users" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Users</a>
+                    <li {{{ (Request::is('admin/users') ? 'class=active' : '') }}}>
+                        <a href="/admin/users" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Users</a>
                     </li>
                     <li>
-                        <a href="/company" class="waves-effect"><i class="fa fa-building fa-fw" aria-hidden="true"></i>Data Perusahaan</a>
+                        <a href="/admin/company" class="waves-effect"><i class="fa fa-building fa-fw" aria-hidden="true"></i>Data Perusahaan</a>
                     </li>
-                    <li {{{ (Request::is('recruitment') ? 'class=active' : '') }}}>
-                        <a href="/recruitment" class="waves-effect"><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i>Recruitment</a>
+                    <li {{{ (Request::is('admin/recruitment') ? 'class=active' : '') }}}>
+                        <a href="/admin/recruitment" class="waves-effect"><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i>Recruitment</a>
                     </li>
-                    <li {{{ (Request::is('news') ? 'class=active' : '') }}}>
-                        <a href="/news" class="waves-effect"><i class="fa fa-book fa-fw" aria-hidden="true"></i>News</a>
+                    <li {{{ (Request::is('admin/news') ? 'class=active' : '') }}}>
+                        <a href="/admin/news" class="waves-effect"><i class="fa fa-book fa-fw" aria-hidden="true"></i>News</a>
                     </li>
-                    <li {{{ (Request::is('userrequest') ? 'class=active' : '') }}}>
-                        <a href="/userrequest" class="waves-effect"><i class="fa fa-unlock-alt fa-fw" aria-hidden="true"></i>Request PKL</a>
+                    <li {{{ (Request::is('admin/userrequest') ? 'class=active' : '') }}}>
+                        <a href="/admin/userrequest" class="waves-effect"><i class="fa fa-unlock-alt fa-fw" aria-hidden="true"></i>Request PKL</a>
                     </li>
                 </ul>
             </div>
