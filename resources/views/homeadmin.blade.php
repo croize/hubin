@@ -70,7 +70,6 @@
                       </tr>
                   </thead>
                   <tbody>
-                    @if($newuser != NULL)
                         @foreach($newuser as $user)
                           <tr>
                               <td>{{$loop->iteration}}</td>
@@ -83,11 +82,58 @@
                               <td class="txt-oflo">{{ date('d F Y',strtotime($user->created_at))}}</td>
                           </tr>
                           @endforeach
-                      @else
-                        <tr>
-                          <td style="text-align:center;">Data kosong</td>
-                        </tr>
-                      @endif
+                  </tbody>
+              </table>
+          </div>
+      </div>
+  </div>
+  <div class="col-md-12 col-lg-6 col-sm-12">
+      <div class="panel">
+          <div class="panel-heading">MANAGE USERS REQUESL PKL</div>
+          <div class="table-responsive">
+              <table class="table table-hover manage-u-table">
+                  <thead>
+                      <tr>
+                          <th style="width: 70px;" class="text-center">#</th>
+                          <th>NAME</th>
+                          <th>CLASS</th>
+                          <th>MANAGE</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                    @foreach($req as $siswapkl)
+                      <tr>
+                          <td class="text-center">>{{$loop->iteration}}</td>
+                          <td><span class="font-medium">{{$siswapkl->Users['name']}}</span></td>
+                          <td>{{$siswapkl->Users['class']}}</td>
+                          <td>
+                            <a href="/admin/userrequest"
+                                onclick="event.preventDefault();
+                                         document.getElementById('accepted').submit();" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                <i class="fa fa-check"></i>
+                            </a>
+                            <form id="accepted" action="/admin/userrequest/{{$siswapkl->id}}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="_method" value="put">
+                                <input type="hidden" name="id" value="{{$siswapkl->id}}">
+                                <input type="hidden" name="akses" value="1">
+                                <input type="hidden" name="user_id" value="{{$siswapkl->user_id}}">
+                            </form>
+                            <a href="/admin/userrequest"
+                                onclick="event.preventDefault();
+                                         document.getElementById('denied').submit();" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                                <i class="fa fa-times"></i>
+                            </a>
+                            <form id="denied" action="/admin/userrequest/{{$siswapkl->id}}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                                <input type="hidden" name="_method" value="put">
+                                <input type="hidden" name="id" value="{{$siswapkl->id}}">
+                                <input type="hidden" name="akses" value="0">
+                                <input type="hidden" name="user_id" value="{{$siswapkl->user_id}}">
+                            </form>
+                          </td>
+                      </tr>
+                    @endforeach
                   </tbody>
               </table>
           </div>

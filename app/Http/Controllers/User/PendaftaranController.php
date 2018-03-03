@@ -59,18 +59,24 @@ class PendaftaranController extends Controller
     {
       $this->validate($request,[
         'company_id' => 'required',
-        'user_id' => 'required',
       ]);
+
+
+
+      $check = Perusahaan::find($request->company_id)->value('student');
+      if ($check == 0) {
+        return redirect('user');
+      }else{
+        $yu = Perusahaan::find($request->company_id);
+        $as = $yu->student - 1;
+        $yu->student = $as;
+        $yu->save();
+      }
 
       $sa = new Pendaftaran();
       $sa->company_id = $request->company_id;
-      $sa->user_id = $request->user_id;
+      $sa->user_id = Auth::user()->id;
       $sa->save();
-
-      $yu = Perusahaan::find($request->company_id);
-      $as = $yu->student - 1;
-      $yu->student = $as;
-      $yu->save();
 
       return redirect('user/join');
     }

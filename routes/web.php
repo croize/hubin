@@ -20,14 +20,15 @@ Route::group(['middleware' => 'revalidate'],function(){
   Route::get('admin/company/delete/{id}', 'Admin\PerusahaanController@destroy');
   Route::resource('admin/userrequest', 'Admin\UserrequestController');
   Route::resource('admin/printdata', 'Admin\PrintController');
+  Route::resource('admin/users', 'Admin\UsersController');
 
   Route::resource('admin','Admin\AdminController');
 
 // User route
   Route::resource('user/join', 'User\PendaftaranController');
-  Route::get('user/delete/{id}', 'User\PendaftaranController@destroy');
+  Route::get('user/join/delete/{id}', 'User\PendaftaranController@destroy');
   Route::resource('user/requestpkl', 'User\RequestpklController');
-
+  Route::resource('user','User\UserController');
 
   Auth::routes();
 

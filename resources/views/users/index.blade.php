@@ -21,9 +21,9 @@
             {{ Session::get('message') }}
         </div>
         @endif
-        <a href="/admin/company/create" class="btn btn-info">Create</a><hr>
+        <a href="/admin/users/create" class="btn btn-info">Create</a><hr>
         <div class="panel">
-          <form class="" action="/admin/company" method="get">
+          <form class="" action="/admin/users" method="get">
             <div class="col-sm-9">
 
             </div>
@@ -38,31 +38,31 @@
                     <thead>
                         <tr>
                             <th style="width: 70px;" class="text-center">NO</th>
-                            <th>Company name</th>
-                            <th>Contact</th>
-                            <th>Total student</th>
-                            <th>Action</th>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>Class</th>
+                            <th>Manage</th>
                         </tr>
                     </thead>
                     <tbody>
-                    @if(count($company))
+                    @if(count($user))
                       @if($search != NULL)
                         Hasil untuk data {{$search}} :
                       @endif
-                      @foreach($company as $perusahaan)
+                      @foreach($user as $users)
                         <tr>
                             <td class="text-center">{{$loop->iteration}}</td>
-                            <td><span class="font-medium">{{$perusahaan->name_company}}</span></td>
-                            <td>{{$perusahaan->contact}}</td>
-                            <td>{{$perusahaan->student}}</td>
+                            <td><span class="font-medium">{{$users->name}}</span></td>
+                            <td>{{$users->email}}</td>
+                            <td>{{$users->class}}</td>
                             <td>
-                              <a href="/admin/company/{{$perusahaan->id}}" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                              <a href="/admin/users/{{$users->id}}" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
                                   <i class="fa fa-eye"></i>
                               </a>
-                              <a href="/admin/company/{{$perusahaan->id}}/edit" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                              <a href="/admin/users/{{$users->id}}/edit" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
                                   <i class="fa fa-pencil"></i>
                               </a>
-                              <a href="{{url('/admin/company/delete', $perusahaan->id)}}" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
+                              <a href="{{url('/admin/users/delete', $users->id)}}" class="btn btn-info btn-outline btn-circle btn-lg m-r-5">
                                   <i class="fa fa-trash-o"></i>
                               </a>
                             </td>
@@ -77,7 +77,7 @@
                     </tbody>
                 </table>
                 <div class="btn-group col-md-offset-5">
-                    <button type="button" class="btn btn-default waves-effect">{!! $company->links() !!}</button>
+                    <button type="button" class="btn btn-default waves-effect">{!! $user->links() !!}</button>
                 </div>
             </div>
 

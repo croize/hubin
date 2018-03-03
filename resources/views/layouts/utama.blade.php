@@ -113,8 +113,8 @@
                     </div>
                 </div>
                 <ul class="nav" id="side-menu">
-                    <li {{{ (Request::is('home') ? 'class=active' : '') }}}>
-                        <a href="/home" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
+                    <li {{{ (Request::is('admin') ? 'class=active' : '') }}}>
+                        <a href="/admin" class="waves-effect"><i class="fa fa-clock-o fa-fw" aria-hidden="true"></i>Dashboard</a>
                     </li>
                     <li {{{ (Request::is('admin/users') ? 'class=active' : '') }}}>
                         <a href="/admin/users" class="waves-effect"><i class="fa fa-user fa-fw" aria-hidden="true"></i>Users</a>

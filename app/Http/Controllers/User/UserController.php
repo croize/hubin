@@ -1,40 +1,20 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\User;
 
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
-use App\Perusahaan;
-use App\User;
-use App\Requestpkl;
 
-
-class AdminController extends Controller
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-
-     public function __construct()
-     {
-         $this->middleware('auth');
-         $this->middleware('level:2');
-     }
-
     public function index()
     {
-        $company = Perusahaan::all()->count();
-        $user = User::all()->where('level', 1)->count();
-        $requestpkl = Requestpkl::all()->count();
-        Carbon::setlocale(LC_TIME, 'id');
-        $now = Carbon::now();
-        $newuser = User::where('created_at', '>=', Carbon::today())->get();
-        $countnewuser = $newuser->count();
-        $datareq = Requestpkl::all();
-        return view('homeadmin')->with('req',$datareq)->with('now',$now)->with('company',$company)->with('user',$user)->with('requestpkl',$requestpkl)->with('newuser',$newuser)->with('countnewuser',$countnewuser);
+        return view('homeuser');
     }
 
     /**

@@ -15,7 +15,6 @@
                   <form class="" action="join" method="post">
                     {{csrf_field()}}
                   <input type="hidden" name="company_id" value="{{$su->id}}">
-                  <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                   {{$su->name_company}}<br>
                   {{$su->description}}<br>
                   {{$su->address}}<br>

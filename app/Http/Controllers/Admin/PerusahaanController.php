@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use App\Perusahaan;
 
@@ -20,10 +21,11 @@ class PerusahaanController extends Controller
          $this->middleware('level:2');
      }
 
-    public function index()
+    public function index(Request $request)
     {
-        $as = Perusahaan::all();
-        return view('perusahaan.index')->with('company', $as);
+        $query = $request->get('search');
+        $as = DB::table('company')->where('name_company','LIKE', '%'. $query . '%')->paginate(10);
+        return view('perusahaan.index')->with('company', $as)->with('search', $query);
     }
 
     /**

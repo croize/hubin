@@ -1,16 +1,13 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
-use Illuminate\Support\Carbon;
 use App\Http\Controllers\Controller;
-use App\Perusahaan;
 use App\User;
-use App\Requestpkl;
 
-
-class AdminController extends Controller
+class UsersController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,17 +21,11 @@ class AdminController extends Controller
          $this->middleware('level:2');
      }
 
-    public function index()
+    public function index(Request $request)
     {
-        $company = Perusahaan::all()->count();
-        $user = User::all()->where('level', 1)->count();
-        $requestpkl = Requestpkl::all()->count();
-        Carbon::setlocale(LC_TIME, 'id');
-        $now = Carbon::now();
-        $newuser = User::where('created_at', '>=', Carbon::today())->get();
-        $countnewuser = $newuser->count();
-        $datareq = Requestpkl::all();
-        return view('homeadmin')->with('req',$datareq)->with('now',$now)->with('company',$company)->with('user',$user)->with('requestpkl',$requestpkl)->with('newuser',$newuser)->with('countnewuser',$countnewuser);
+        $query = $request->get('search');
+        $users = DB::table('users')->where('level','1')->where('name','LIKE', '%'. $query . '%')->paginate(10);
+        return view('users.index')->with('user',$users)->with('search', $query);
     }
 
     /**
@@ -44,7 +35,7 @@ class AdminController extends Controller
      */
     public function create()
     {
-        //
+        return view('users.create');
     }
 
     /**
@@ -55,7 +46,24 @@ class AdminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request,[
+          'name' => 'required|string|max:255',
+          'email' => 'required|string|email|max:255|unique:users',
+          'password' => 'required|string|min:6|confirmed',
+          'contact_user' => 'required',
+          'class' => 'required',
+        ]);
+
+        $store = new User();
+        $store->name = $request->name;
+        $store->email = $request->email;
+        $store->password = bcrypt($request->password);
+        $store->contact_user = $request->contact_user;
+        $store->class = $request->class;
+        $store->save();
+
+        return redirect('admin\users');
+
     }
 
     /**
@@ -66,7 +74,8 @@ class AdminController extends Controller
      */
     public function show($id)
     {
-        //
+        $users = User::find($id);
+        return view('users.view')->with('user',$users);
     }
 
     /**
