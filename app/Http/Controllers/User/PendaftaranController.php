@@ -8,6 +8,7 @@ use Illuminate\Support\Facades\DB;
 use App\Pendaftaran;
 use App\Perusahaan;
 use App\User;
+use App\Infopkl;
 use Auth;
 
 class PendaftaranController extends Controller
@@ -35,7 +36,9 @@ class PendaftaranController extends Controller
         $user = User::all();
         $cu = DB::table('join_company')->where('user_id',$userid)->value('id');
         $cob = DB::table('join_company')->where('user_id',$userid)->value('company_id');
-        return view('joincompany.index')->with('cit',$cu)->with('pen',$daf)->with('lala',$com)->with('users',$user)->with('ge',$cob);
+        $infodate = Infopkl::where('id',1)->value('date');
+        $infohours = Infopkl::where('id',1)->value('jam');
+        return view('joincompany.index')->with('cit',$cu)->with('pen',$daf)->with('lala',$com)->with('users',$user)->with('ge',$cob)->with('date',$infodate)->with('hours',$infohours);
       }
     }
 
