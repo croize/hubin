@@ -49,9 +49,11 @@ class UsersController extends Controller
         $this->validate($request,[
           'name' => 'required|string|max:255',
           'email' => 'required|string|email|max:255|unique:users',
-          'password' => 'required|string|min:6|confirmed',
+          'password' => 'required|string|min:6',
           'contact_user' => 'required',
           'class' => 'required',
+          'nis' => 'required|unique:users',
+          'jurusan' => 'required',
         ]);
 
         $store = new User();
@@ -60,9 +62,11 @@ class UsersController extends Controller
         $store->password = bcrypt($request->password);
         $store->contact_user = $request->contact_user;
         $store->class = $request->class;
+        $store->nis = $request->nis;
+        $store->jurusan = $request->jurusan;
         $store->save();
 
-        return redirect('admin\users');
+        return redirect('admin\users')->with('message', 'Data perusahaan berhasil di tambahkan');
 
     }
 
@@ -86,7 +90,8 @@ class UsersController extends Controller
      */
     public function edit($id)
     {
-        //
+      $users = User::find($id);
+      return view('users.edit')->with('user',$users);
     }
 
     /**
@@ -98,7 +103,21 @@ class UsersController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+      $this->validate($request,[
+        'name' => 'required|string|max:255',
+        'contact_user' => 'required',
+        'class' => 'required',
+        'jurusan' => 'required',
+      ]);
+
+      $store = User::find($id);
+      $store->name = $request->name;
+      $store->contact_user = $request->contact_user;
+      $store->class = $request->class;
+      $store->jurusan = $request->jurusan;
+      $store->save();
+
+      return redirect('admin\users')->with('message', 'Data perusahaan berhasil di update');
     }
 
     /**
@@ -109,6 +128,8 @@ class UsersController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $deleteuser = User::find($id);
+        $deleteuser->delete();
+        return redirect('admin\users')->with('message', 'Data perusahaan berhasil di delete');
     }
 }

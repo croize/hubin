@@ -21,6 +21,7 @@ Route::group(['middleware' => 'revalidate'],function(){
   Route::resource('admin/userrequest', 'Admin\UserrequestController');
   Route::resource('admin/printdata', 'Admin\PrintController');
   Route::resource('admin/users', 'Admin\UsersController');
+  Route::get('admin/users/delete/{id}', 'Admin\UsersController@destroy');
 
   Route::resource('admin','Admin\AdminController');
 

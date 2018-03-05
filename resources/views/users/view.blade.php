@@ -53,7 +53,7 @@
                         </div>
                         <div class="col-md-3 col-xs-6"> <strong>Jurusan</strong>
                             <br>
-                            <p class="text-muted">{{$user->class}}</p>
+                            <p class="text-muted">@if($user->jurusan == 1) Analis Kimia @elseif($user->jurusan == 2) Rekayasa Perangkat Lunak @elseif($user->jurusan == 3)Teknik Komunikasi dan Jaringan @endif</p>
                         </div>
                     </div>
                 </div>

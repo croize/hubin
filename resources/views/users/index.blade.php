@@ -13,8 +13,8 @@
 </div>
 <div class="col-sm-12">
     <div class="white-box">
-        <h3 class="box-title m-b-0">Data Perusahaan</h3>
-        <p class="text-muted m-b-30">Penambahan, edit dan delete data perusahaan.</p>
+        <h3 class="box-title m-b-0">Data User</h3>
+        <p class="text-muted m-b-30">Penambahan, edit dan delete data user.</p>
         @if(Session::get('message') != NULL)
         <div class="alert alert-success alert-dismissable">
             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button>
