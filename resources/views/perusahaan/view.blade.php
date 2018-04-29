@@ -29,21 +29,34 @@
                                         <td> {{$view->description}} </td>
                                     </tr>
                                     <tr>
-                                        <td><i class="fa fa-map-marker"></i>  Address</td>
+                                        <td>Address</td>
                                         <td> {{$view->address}} </td>
                                     </tr>
                                     <tr>
-                                        <td><i class="fa fa-phone-square"></i>  Contact</td>
+                                        <td>Contact</td>
                                         <td> {{$view->contact}} </td>
                                     </tr>
                                     <tr>
-                                        <td><i class="fa fa-users"></i> Total student</td>
+                                        <td>Total student</td>
                                         <td>
                                           @if($view->student == 0)
                                           <small class="label bg-green" style="background-color: red;">FULL</small>
                                           @else
                                           <small class="label bg-green" style="background-color: green;">{{$view->student}} Available</small></td>
                                           @endif
+                                    </tr>
+                                    <tr>
+                                        <td>Jurusan</td>
+                                        <td>
+                                          @if($view->jurusan == "1")
+                                          <small class="">Analis Kimia</small>
+                                          @elseif($view->jurusan == "2")
+                                          <small class="">Teknik Komunikasi dan Jaringan</small>
+                                          @elseif($view->jurusan == "3")
+                                          <small class=""><i class="fa fa-desktop"></i>Rekayasa Perangkat Lunak</small>
+                                          @endif
+                                        </td>
+
                                     </tr>
                                 </tbody>
                             </table>

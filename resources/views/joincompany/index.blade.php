@@ -2,145 +2,250 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Document</title>
+  <title>Pengajuan Praktik Kerja Lapangan</title>
         <link rel="stylesheet" href="{{url('css/bootstrap.min.css')}}">
         <link rel="stylesheet" href="{{url('css/jquery.countdown.css')}}" />
-        <script src="{{url('js/bootstrap.min.js')}}"></script>
+        <link rel="stylesheet" href="{{url('assets/flipclock.css')}}" />
         <script src="{{url('js/jquery-3.3.1.js')}}"></script>
+        <script src="{{url('js/bootstrap.min.js')}}"></script>
         <script src="{{url('js/jquery.countdown.js')}}"></script>
+        <script src="{{url('assets/flipclock.js')}}"></script>
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-        <link rel="stylesheet" href="{{url('css/index.css')}}">
+        <link rel="stylesheet" href="{{ url('css/index.css')}}">
+<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
 </head>
 <body>
+<style>
+*{font-family: 'Source Sans Pro', sans-serif;}
+.navbar-login
+{
+    width: 305px;
+    padding: 10px;
+    padding-bottom: 0px;
+}
+
+.navbar-login-session
+{
+    padding: 10px;
+    padding-bottom: 0px;
+    padding-top: 0px;
+}
+
+.icon-size
+{
+    font-size: 87px;
+}
+#grid-mobile{
+  height: 100%;
+  width: 100%;
+  position: relative;
+}
 
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
-  <a class="navbar-brand" href="#">HUBIN</a>
+</style>
+<nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top" style="margin: 0px;position: fixed;border-radius: 0px;padding: 0px;border-bottom: 1px solid #e7e7e7;">
+
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
-  <div class="collapse navbar-collapse" id="navbarNav">
+  <div class="collapse navbar-collapse container" id="navbarNav">
     <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
+      <li class="nav-item active" style="    padding: 7px 0px;">
+        <a  href="#" style="color: black;text-decoration: none;"><img src="{{url('img/smkn13.png')}}" alt="" style="height: 35px;">        Hubin SMKN 13 Bandung</a>
       </li>
     </ul>
+    <ul class="nav navbar-nav navbar-right">
+                          <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: black;">
+                        <span class="glyphicon glyphicon-user"></span> 
+                        <strong>{{Auth::user()->name}}</strong>
+
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="navbar-login">
+                                <div class="row">
+                                    <div class="col-lg-4">
+                                        <p class="text-center">
+                                            <span class="glyphicon glyphicon-user icon-size"></span>
+                                        </p>
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <p class="text-left"><strong>{{Auth::user()->name}}</strong></p>
+                                        <p class="text-left small">{{Auth::user()->email}}</p>
+                                        <p class="text-left">
+                                            <a href="#" class="btn btn-primary btn-block btn-sm">Edit Profile</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <div class="navbar-login navbar-login-session">
+                                <div class="row">
+                                    <div class="col-lg-12">
+                                        <p>
+                                            <a href="{{ route('logout') }}" class="btn btn-danger btn-block" onclick="event.preventDefault();document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Logout</a>
+                                              <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                  {{ csrf_field() }}
+                                              </form>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+                        </ul>
   </div>
 </nav>
-<div class="col-lg-12 parallax" style="height: 400px;background-size: 100%;background-image: url('{{url('img/frontheader.jpg')}}');padding: 15%;color: #fff;">
-  <center><h2>HUBIN SMKN 13 BANDUNG</h2></center>
+
+
+<div class="col-lg-12 parallax img-fluid" style="height: 400px;background-size: 100%;background-image: url('{{url('img/frontheader.jpg')}}');background-repeat: no-repeat;padding: 15%;color: #fff;" id="waa">
+  <center><h2 style="font-size: 36px;font-weight: 600;">Hubungan Industri - SMKN 13 BANDUNG</h2></center>
 </div>
 
 
 <div class="row" id="setgrid">
 
     <!--==========================CONTENT KIRI==========================-->
-    <div class="col-lg-3">
+    <div class="col-lg-3  col-sm-0 col-md-0">
           <h4>SEARCH</h4>
-              <form class="navbar-form" role="search" id="frm-s">
-                  <div class="input-group">
-                      <input type="text" class="form-control" placeholder="Search" name="q">
-                      <div class="input-group-btn">
-                          <button class="btn btn-default" type="submit" style="border-bottom-left-radius: 0px;border-top-left-radius: 0px;"><i class=     "fa    fa fa-search"></i></button>
-                      </div>
-                  </div>
-              </form>
-
-          <hr>
-
-          <h4>FILTER</h4>
-          <form action="" id="frm-f">
-
-            <div class="flt">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input optObjek" id="customCheck1" value="jurusan">
-                <label class="custom-control-label" for="customCheck1">Jurusan</label>
-              </div>
-            </div>
-            <div class="flt">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input optObjek" id="customCheck2" value="dalamkota">
-                <label class="custom-control-label" for="customCheck2">Dalam Kota</label>
-              </div>
-            </div>
-            <div class="flt">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input optObjek" id="customCheck3" value="luarkota">
-                <label class="custom-control-label" for="customCheck3">Luar Kota</label>
-              </div>
-            </div>
-            <div class="flt">
-              <div class="custom-control custom-checkbox">
-                <input type="checkbox" class="custom-control-input optObjek" id="customCheck4" value="lainlain">
-                <label class="custom-control-label" for="customCheck4">Lain lain</label>
-              </div>
-            </div>
+          <form action="/user/join" method="get">
+            <div class="input-group"><input type="text" class="form-control js-entity-filter" name="q" value=""> <span class="input-group-btn"> <button class="btn btn-default" type="submit"><i class="fa fa-search"></i></button> </span> </div>
           </form>
-
-
-
+          <hr>
     </div>
     <!--==========================CONTENT KANAN==========================-->
-    <div class="col-9" id="list_mitraPengamanan">
-        <div class="col-lg-12" id="con1">
-            <center><h2>SISA WAKTU PEMILIHAN TEMPAT PKL 2018 </h2>  </center>
+    <div class="col-lg-9  col-sm-12 col-md-12" id="list_mitraPengamanan">
+        <div class="" id="con1">
+            <center><h2><b>SISA WAKTU PEMILIHAN TEMPAT PKL 2018 </b></h2>  </center>
+
+
             <!-- Display the countdown timer in an element -->
             <p id="demo"></p>
         </div>
+        @if(Session::get('message'))
+          <div class="alert alert-danger alert-dismissable">
+          <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button> {{ Session::get('message') }} </div>
+          @endif
         <!--===============CONTENT===============-->
-        <div class="col-lg-12 filter dalamkota lainlain" id="content-right" >
-          <div class="row">
-          <div class="col-lg-3" id="grid-logo">
-              <img src="{{url('img/page_bg_center.jpg')}}" id="setlogo">
-          </div>
-          <div class="col-lg-5" id="field-content">
-            <a href="" id="colorlink"><h4 >PT INTI (PERSERO)</h4></a><br>
-            Description ====
-          </div>
-          <div class="col-lg-4" id="content-icon">
-            <i class="fa fa fa-user"> 24 Orang</i><br>
-            <i class="fa fa fa-trophy"> IT </i><br>
-            <i class="fa fa fa-location-arrow"> BANDUNG</i><br>
-            <i class="fa fa fa-shield" style="color: #27ae61;"> AKTIF</i><br>
+        @if($cit != NULL)
+          @foreach($lala as $waa)
+            @if($waa->id == $ge)
+            <div class="boxone" style="padding: 30px;padding-left: 0px;">
+              <h3><b>PERUSAHAAN YANG ANDA PILIH :</b></h3>
+            </div>
 
-          </div>
+              <div class="col-lg-12  col-sm-12 col-xs-12" id="content-right" style="position: relative;" >
+                <div class="row">
+                  <div class="col-lg-3 col-sm-12" id="grid-logo">
+                      <img src="{{url('img/page_bg_center.jpg')}}" id="setlogo" class="img-fluid">
+                  </div>
+                  <div class="col-lg-5 col-sm-12" id="field-content">
+                    <a href="" id="colorlink"><cptncmpny>{{$waa->name_company}}</cptncmpny></a><br>
+                    {{$waa->descrtiption}}
+                  </div>
+                  <div class="col-lg-4 col-xs-12 col-s-12" id="content-icon">
 
-          </div>
+
+
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#product_view"><i class="    fa fa-question-circle"></i> Detail</button>
+                    <a href="{{url('/user/join/delete',$cit)}}" class="btn btn-danger"><i class=" fa fa-remove"></i> Cancel join</a>
+<div class="modal fade product_view" id="product_view" style="float: left;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title"><center>Detail perusahaan  {{$waa->name_company}}</center></h3>
+                <a href="#" data-dismiss="modal" class="class pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+            </div>
+            <div class="modal-body">
+<table>
+  <tr>
+    <td style="width: 150px;">Nama Perusahaan </td>
+    <td style="width: 200px;">: {{$waa->name_company}} </td>
+  </tr>
+  <tr>
+    <td>Alamat</td>
+    <td>: {{$waa->address}}</td>
+  </tr>
+  <tr>
+    <td>Deskripsi</td>
+    <td>: {{$waa->description}}</td>
+  </tr>
+</table>
+<br>
+                    <h4>DATA SISWA PENDAFTAR :</h4>
+                    <ul type="square">
+                      @foreach($pen as $rw)
+                        @if($rw->company_id == $ge)
+                        <li>{{$rw->User['name']}}</li>
+                        @endif
+                      @endforeach
+                    </ul>
+            </div>
         </div>
-        <!--===============CONTENT===============-->
-                <div class="col-lg-12 filter jurusan" id="content-right" >
-          <div class="row">
-          <div class="col-lg-3" id="grid-logo">
-              <img src="{{url('img/page_bg_center.jpg')}}" id="setlogo">
-          </div>
-          <div class="col-lg-5" id="field-content">
-            <a href="" id="colorlink"><h4 >PT BIRUTEKNO INC</h4></a><br>
-            DBS Live More Society: Developer Challenge 2 ini diselenggarakan oleh PT Bank DBS Indonesia.
-          </div>
-          <div class="col-lg-4" id="content-icon">
-            <i class="fa fa fa-user"> 24 Orang</i><br>
-            <i class="fa fa fa-trophy"> IT </i><br>
-            <i class="fa fa fa-location-arrow"> BANDUNG</i><br>
-            <i class="fa fa fa-shield" style="color: #ba2d2d;"> TIDAK AKTIF</i><br>
-
-          </div>
-
-          </div>
-        </div>
-
-
-
     </div>
+</div>
+                  </div>
+                </div>
+              </div>
+            @endif
+          @endforeach
 
+        @else
+          @foreach($lala as $su)
+
+              <div class="col-lg-12 col-xs-12" id="content-right" >
+
+                  <div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" id="grid-logo">
+                      <img src="{{url('img/list_logo_2.png')}}" id="setlogo" class="img-fluid" alt="Responsive image">
+                  </div>
+                  <div class="col-lg-5 col-md-12 col-sm-12 col-xs-12" id="field-content" style="font-weight: bold;">
+                    <a href="" id="colorlink"><cptncmpny>{{$su->name_company}}</cptncmpny></a><br>
+                  </div>
+                  <div class="col-lg-4 col-md-12 col-sm-12 col-xs-12" id="content-icon" style="line-height: 35px;">
+
+                    <table>
+                      <tr>
+                        <td id="ats"><i class="fa fa fa-user"></i></td>
+                        <td id="bwh" >{{$su->student}} Orang</td>
+                      </tr>
+                      <tr>
+                        <td id="ats"><i class="fa fa fa-trophy"></i></td>
+                        <td id="bwh">IT</td>
+                      </tr>
+                      <tr>
+                        <td id="ats"><i class="fa fa fa-location-arrow"></i></td>
+                        <td id="bwhatas">{{$su->address}}</td>
+                      </tr>
+                      <tr>
+                        <td id="ats"><i class="fa fa fa-shield" style="color: #27ae61;"></i></td>
+                        <td id="bwh">@if($su->student > 0) AKTIF @elseif($su->student == 0) FULL @endif</td>
+                      </tr>
+
+
+                    </table>
+
+                    <form class="" action="/user/join" method="post" id="join">
+                    {{csrf_field()}}
+                  <input type="hidden" name="company_id" value="{{$su->id}}">
+
+                  <button type="submit" name="button" class="btn btn-primary"><i class="  fa fa-check"></i> JOIN</button>
+                  </form>
+                  </div>
+
+              </div>
+
+          @endforeach
+        @endif
+        <!--===============CONTENT===============-->
+    </div>
 </div>
 
 
@@ -149,6 +254,14 @@
     <center>HUBIN SMKN 13 BANDUNG - 2018</center>
   </div>
 </footer>
+
+
+
+
+
+
+
+
 
 <script>
 // Set the date we're counting down to
@@ -170,7 +283,7 @@ var x = setInterval(function() {
   var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
   // Display the result in the element with id="demo"
-  document.getElementById("demo").innerHTML = days + " : " + hours + " : "
+  document.getElementById("demo").innerHTML = days + " Hari : " + hours + " : "
   + minutes + " : " + seconds;
 
   // If the count down is finished, write some text

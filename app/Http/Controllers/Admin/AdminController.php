@@ -8,7 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Perusahaan;
 use App\User;
 use App\Requestpkl;
-
+use App\Infopkl;
 
 class AdminController extends Controller
 {
@@ -34,7 +34,8 @@ class AdminController extends Controller
         $newuser = User::where('created_at', '>=', Carbon::today())->get();
         $countnewuser = $newuser->count();
         $datareq = Requestpkl::all();
-        return view('homeadmin')->with('req',$datareq)->with('now',$now)->with('company',$company)->with('user',$user)->with('requestpkl',$requestpkl)->with('newuser',$newuser)->with('countnewuser',$countnewuser);
+        $infopkl = Infopkl::where('id',1)->value('date');
+        return view('homeadmin')->with('req',$datareq)->with('now',$now)->with('company',$company)->with('user',$user)->with('requestpkl',$requestpkl)->with('newuser',$newuser)->with('countnewuser',$countnewuser)->with('info',$infopkl);
     }
 
     /**

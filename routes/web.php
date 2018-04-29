@@ -22,6 +22,8 @@ Route::group(['middleware' => 'revalidate'],function(){
   Route::resource('admin/printdata', 'Admin\PrintController');
   Route::resource('admin/users', 'Admin\UsersController');
   Route::get('admin/users/delete/{id}', 'Admin\UsersController@destroy');
+  Route::resource('admin/infopkl', 'Admin\InfopklController');
+  Route::resource('admin/account', 'Admin\AccountController');
 
   Route::resource('admin','Admin\AdminController');
 
@@ -31,6 +33,7 @@ Route::group(['middleware' => 'revalidate'],function(){
   Route::resource('user/requestpkl', 'User\RequestpklController');
   Route::resource('user','User\UserController');
 
+  Route::resource('/','User\UserController');
   Auth::routes();
 
   Route::get('/home', 'HomeController@index')->name('home');

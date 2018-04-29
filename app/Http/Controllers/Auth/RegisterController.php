@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
@@ -51,7 +52,8 @@ class RegisterController extends Controller
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
-            'contact_user' => 'required'
+            'kelas' => 'required',
+            'nis' => 'required|integer',
         ]);
     }
 
@@ -63,11 +65,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+      $kelas = $data['kelas'];
+      if ($kelas == 'XIII-AK 1' || $kelas == 'XIII-AK 2' || $kelas == 'XIII-AK 3' || $kelas == 'XIII-AK 4' || $kelas == 'XIII-AK 5' || $kelas == 'XIII-AK 6') {
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
-            'contact_user' => $data['contact_user'],
+            'class' => $data['kelas'],
+            'nis' => $data['nis'],
+            'jurusan' => 1,
         ]);
+      }elseif ($kelas == 'XII-RPL 1' || $kelas == 'XII-RPL 2') {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'class' => $data['kelas'],
+            'nis' => $data['nis'],
+            'jurusan' => 2,
+        ]);
+      }elseif ($kelas == 'XII-TKJ 1' || $kelas == 'XII-TKJ 2' || $kelas == 'XII-TKJ 3') {
+        return User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'class' => $data['kelas'],
+            'nis' => $data['nis'],
+            'jurusan' => 3,
+        ]);
+      }
+
     }
 }

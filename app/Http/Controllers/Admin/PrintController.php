@@ -16,7 +16,8 @@ class PrintController extends Controller
      */
     public function index()
     {
-
+      $pn = Perusahaan::all();
+      return view('print.index',compact('pn'));
     }
 
     /**

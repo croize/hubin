@@ -78,11 +78,11 @@
                                 <div class="u-img"><img src="{{url('assets/images/users/varun.jpg')}}" alt="user" /></div>
                                 <div class="u-text">
                                     <h4>{{Auth::user()->name}}</h4>
-                                    <p class="text-muted" style="font-size:12px;">{{Auth::user()->email}}</p><a href="profile.html" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
+                                    <p class="text-muted" style="font-size:12px;">{{Auth::user()->email}}</p></div>
                             </div>
                         </li>
                         <li role="separator" class="divider"></li>
-                        <li><a href="#"><i class="fa fa-settings"></i> Account Setting</a></li>
+                        <li><a href="/admin/account/{{Auth::user()->id}}/edit"><i class="fa fa-settings"></i> Account Setting</a></li>
                         <li role="separator" class="divider"></li>
                         <li><a href="{{ route('logout') }}" onclick="event.preventDefault();
                                  document.getElementById('logout-form').submit();"><i class="fa fa-power-off"></i> Logout</a>
@@ -122,14 +122,11 @@
                     <li>
                         <a href="/admin/company" class="waves-effect"><i class="fa fa-building fa-fw" aria-hidden="true"></i>Data Perusahaan</a>
                     </li>
-                    <li {{{ (Request::is('admin/recruitment') ? 'class=active' : '') }}}>
-                        <a href="/admin/recruitment" class="waves-effect"><i class="fa fa-graduation-cap fa-fw" aria-hidden="true"></i>Recruitment</a>
-                    </li>
-                    <li {{{ (Request::is('admin/news') ? 'class=active' : '') }}}>
-                        <a href="/admin/news" class="waves-effect"><i class="fa fa-book fa-fw" aria-hidden="true"></i>News</a>
-                    </li>
                     <li {{{ (Request::is('admin/userrequest') ? 'class=active' : '') }}}>
                         <a href="/admin/userrequest" class="waves-effect"><i class="fa fa-unlock-alt fa-fw" aria-hidden="true"></i>Request PKL</a>
+                    </li>
+                    <li {{{ (Request::is('admin/printdata') ? 'class=active' : '') }}}>
+                        <a href="/admin/printdata" class="waves-effect"><i class="fa fa-print fa-fw" aria-hidden="true"></i>Print Surat</a>
                     </li>
                 </ul>
             </div>

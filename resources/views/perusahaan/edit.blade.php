@@ -1,5 +1,9 @@
 @extends('layouts.utama')
 
+@section('css')
+  <link rel="stylesheet" href="{{url('assets/css/select2.min.css')}}">
+@endsection
+
 @section('content')
 <div class="row bg-title">
     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -18,7 +22,7 @@
             <h3 class="box-title">Create Company</h3>
               <!-- general form elements -->
 
-<form class="" action="admin/company/{{$view->id}}" method="post" role="form">
+<form class="" action="/admin/company/{{$view->id}}" method="post" role="form">
   {{csrf_field()}}
   <input type="hidden" name="_method" value="put">
 <div class="box-body">
@@ -52,6 +56,31 @@
       </span>
   @endif
 </div>
+<div class="form-group">
+  <label for="">Jurusan</label>
+  <select class="js-example-basic-single form-control" name="jurusan">
+    <option value=""></option>
+    <option value="1" @if($view->jurusan == 1) selected @endif>Analis Kimia</option>
+    <option value="3" @if($view->jurusan == 3) selected @endif>Teknik Komunikasi dan Jaringan</option>
+    <option value="2" @if($view->jurusan == 2) selected @endif>Rekayasa Perangkat Lunak</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="">Category</label>
+  <select class="js-example-basic-single form-control" name="category">
+    <option value=""></option>
+    <option value="1" @if($view->category == 1) selected @endif>National</option>
+    <option value="2" @if($view->category == 2) selected @endif>International</option>
+  </select>
+</div>
+<div class="form-group">
+  <label for="">Category Wilayah</label>
+  <select class="js-example-basic-single form-control" name="category_wilayah">
+    <option value=""></option>
+    <option value="1" @if($view->category_wilayah == 1) selected @endif>Dalam Kota</option>
+    <option value="2" @if($view->category_wilayah == 2) selected @endif>Luar Kota</option>
+  </select>
+</div>
 </div>
 <!-- /.box-body -->
 
@@ -64,4 +93,13 @@
         </div>
     </div>
 </div>
+@endsection
+
+@section('js')
+    <script src="{{url('assets/js/select2.full.min.js')}}"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+      $('.js-example-basic-single').select2();
+    });
+    </script>
 @endsection

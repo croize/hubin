@@ -1,5 +1,6 @@
 body{
-	overflow-x: hidden;background-color: #f8f8f8
+	overflow-x: hidden;background-color: #f8f8f8;
+
 }
 #setgrid{
 	padding: 50px 50px 0px 50px;
@@ -40,8 +41,18 @@ body{
 #field-content{
 	font-size: 15px;
 }
+cptncmpny{
+	font-size: 24px;
+	color: #d9534f;
+}
+
+
 #colorlink{
-	color: #dd6662;
+	color: #d9534f;
+}
+#colorlink a:hover{
+	color: #c9302c;
+	font-family: 'Source Sans Pro',sans-serif;
 }
 #content-icon{
 	font-size: 14px;color: #555;
@@ -83,4 +94,53 @@ body{
   font-size: 70px;
   margin-top:0px;
   font: 75px/1.5 'Open Sans Condensed',sans-serif;
+}
+
+
+
+
+
+#content-right{
+	border-bottom:  1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-left: 1px solid #ddd;
+	background-color: #fff;
+	height: 240px;
+	padding: 1.618em;
+}
+
+/*
+
+  @media (min-width: 100px) {
+#content-right{
+	width: 
+}
+}
+
+@media (min-width: 500px) {
+#content-right{
+	width: 
+}
+}
+*/
+@media (min-width: 100px) {
+#content-right{
+    height: 15%;
+}
+}
+
+@media (min-width: 993px) {
+#content-right{
+	width: 100%;
+}
+
+#bwh{
+	height: 20px;padding-left:10px;
+}
+#ats{
+	height: 10px;padding-left:0px;
+}
+#bwhatas{
+    line-height: 17px;
+    height: 10px;padding-left:10px;
 }

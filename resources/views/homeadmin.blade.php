@@ -47,6 +47,15 @@
     </div>
 </div>
 <div class="row">
+  <div class="col-md-12">
+    <div class="white-box">
+      <h2 style="text-align:center;">WAKTU PRAKERIN</h2>
+      <h2 style="text-align:center;">{{ date('d F Y',strtotime($info))}}</h2>
+      <a href="/admin/infopkl/1/edit" class="btn btn-primary">Edit</a>
+    </div>
+  </div>
+</div>
+<div class="row">
   <div class="col-md-12 col-lg-6 col-sm-12">
       <div class="white-box">
           <h3 class="box-title">User Register Today</h3>

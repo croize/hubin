@@ -105,6 +105,7 @@ class PerusahaanController extends Controller
         'address' => 'required',
         'contact' => 'required',
         'student' => 'required|integer',
+        'jurusan' => 'required',
       ]);
 
       $sa = Perusahaan::find($id);
@@ -113,7 +114,9 @@ class PerusahaanController extends Controller
       $sa->address = $request->address;
       $sa->contact = $request->contact;
       $sa->student = $request->student;
-
+      $sa->jurusan = $request->jurusan;
+      $sa->category = $request->category;
+      $sa->category_wilayah = $request->category_wilayah;
       $sa->save();
 
       return redirect('admin/company')->with('message', 'Data perusahaan berhasil di update');
